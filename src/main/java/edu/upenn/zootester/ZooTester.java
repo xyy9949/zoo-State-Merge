@@ -47,6 +47,24 @@ public class ZooTester {
                 case "baseline-interesting":
                     scenario = new InterestingBaselineScenario();
                     break;
+                case "scenario-1":
+                    scenario = new Scenario1();
+                    break;
+                case "scenario-2":
+                    scenario = new Scenario2();
+                    break;
+                case "scenario-3":
+                    scenario = new Scenario3();
+                    break;
+                case "scenario-4":
+                    scenario = new Scenario4();
+                    break;
+                case "scenario-5":
+                    scenario = new Scenario5();
+                    break;
+                case "scenario-6":
+                    scenario = new Scenario6();
+                    break;
                 default:
                     LOG.error("Unknown scenario!");
                     throw new Exception("Unknown scenario");
