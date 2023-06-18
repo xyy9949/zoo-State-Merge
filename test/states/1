@@ -1,0 +1,6 @@
+StateCollectingUtil{nodeId=1, type=INIT, zxid=4294967299, context='lastQueued: 4294967299, pendingSyncs:[], pendingTxns:[]', messageToSend='null'}
+StateCollectingUtil{nodeId=1, type=PROPOSE, zxid=4294967300, context='lastQueued: 4294967300, pendingSyncs:[], pendingTxns:[{type:create cxid:0x1 zxid:0x100000004 txntype:1}]', messageToSend='4294967300-ACK'}
+StateCollectingUtil{nodeId=1, type=COMMIT, zxid=4294967300, context='lastQueued: 4294967300, pendingSyncs:[], pendingTxns:[]', messageToSend='null'}
+StateCollectingUtil{nodeId=1, type=INIT, zxid=4294967300, context='lastQueued: 4294967300, pendingSyncs:[], pendingTxns:[]', messageToSend='null'}
+StateCollectingUtil{nodeId=1, type=PROPOSE, zxid=4294967301, context='lastQueued: 4294967301, pendingSyncs:[], pendingTxns:[{type:create cxid:0x2 zxid:0x100000005 txntype:1}]', messageToSend='4294967301-ACK'}
+StateCollectingUtil{nodeId=1, type=COMMIT, zxid=4294967301, context='lastQueued: 4294967301, pendingSyncs:[], pendingTxns:[]', messageToSend='null'}
