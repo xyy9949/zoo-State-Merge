@@ -44,28 +44,34 @@ public class Scenario1 implements Scenario {
             Assert.assertTrue("There should be a leader", srvC >= 0);
 
             // Create initial znodes
-//            PropertyModUtil.setNodeNum(3);
-//            PropertyModUtil.setRequestId(0);
+            PropertyModUtil.setNodeNum(3);
+            PropertyModUtil.setRequestId(0);
             zkEnsemble.handleRequest(srvC, (zk, serverId) -> {
                 zk.create(KEYS.get(0), "0".getBytes(), Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
                 zk.create(KEYS.get(1), "1".getBytes(), Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
             });
 
-//            PropertyModUtil.setRequestId(1);
-//            zkEnsemble.handleRequest(srvB, (zk, serverId) -> {
-//                zk.setData(KEYS.get(0), "1000".getBytes(), -1, null, null);
-//                Thread.sleep(500);
-////                System.gc();
-//            });
+            PropertyModUtil.setRequestId(1);
+            zkEnsemble.handleRequest(srvB, (zk, serverId) -> {
+                zk.setData(KEYS.get(0), "1000".getBytes(), -1, null, null);
+                Thread.sleep(500);
+                System.gc();
+            });
 
-//            zkEnsemble.checkProperty(CONSISTENT_VALUES);
-//
-////            PropertyModUtil.setRequestId(2);
-//            zkEnsemble.handleRequest(srvA, (zk, serverId) -> {
-//                zk.setData(KEYS.get(1), "1001".getBytes(), -1, null, null);
-//                Thread.sleep(500);
-////                System.gc();
-//            });
+            zkEnsemble.stopAllServers();
+            zkEnsemble.startAllServers();
+
+            zkEnsemble.checkProperty(CONSISTENT_VALUES);
+
+            PropertyModUtil.setRequestId(2);
+            zkEnsemble.handleRequest(srvA, (zk, serverId) -> {
+                zk.setData(KEYS.get(1), "1001".getBytes(), -1, null, null);
+                Thread.sleep(500);
+                System.gc();
+            });
+
+            zkEnsemble.stopAllServers();
+            zkEnsemble.startAllServers();
 
             final boolean result = zkEnsemble.checkProperty(CONSISTENT_VALUES);
             Assert.assertTrue("All keys on all servers should have the same value", result);
